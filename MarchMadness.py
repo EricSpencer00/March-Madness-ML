@@ -93,14 +93,14 @@ if numTrials != 0:
 ############################## TEST MODEL ##############################
 
 def predictGame(team_1_vector, team_2_vector, home, modelUsed):
-    diff = [a - b for a, b in zip(team_1_vector, team_2_vector)]
-    diff.append(home)
-    if hasattr(modelUsed, 'predict_proba'):
-	    return modelUsed.predict_proba([diff])[0][1]
-    elif hasattr(modelUsed, 'predict'):
-        return modelUsed.predict([diff])[0]
-    else:
-        raise AttributeError("Model does not have expected prediction method")
+	diff = [a - b for a, b in zip(team_1_vector, team_2_vector)]
+	diff.append(home)
+	if hasattr(modelUsed, 'predict_proba'):
+		return modelUsed.predict_proba([diff])[0][1]
+	elif hasattr(modelUsed, 'predict'):
+		return modelUsed.predict([diff])[0]
+	else:
+		raise AttributeError("Model does not have expected prediction method")
 
 ############################## CREATE KAGGLE SUBMISSION ##############################
 
